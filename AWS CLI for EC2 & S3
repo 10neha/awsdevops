@@ -1,0 +1,23 @@
+#Used to configure the AWS account in Azure CLI 
+aws configure
+#Create new ec2 instances with the specified details
+aws ec2  run-instances --image-id ami-053b0d53c279acc90  --instance-type t2.micro --key-name 16thjuly --subnet-id  subnet-0908b38fca309857e --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyEC2}]'
+#List the ec2 & its details 
+aws ec2 describe-instances
+#terminate instances 
+aws ec2 terminate-instances --instance-ids i-09a43338dbc72ab8d i-0102a5fccd91f96d8
+#describes the status of the Ec2 instances 
+aws ec2 describe-instance-status --instance-id i-09a43338dbc72ab8d i-0102a5fccd91f96d8
+#list the S3 buckets 
+aws s3 ls
+#delete the s3 object 
+aws s3api delete-object --bucket 19thjuly2023s3buck --key index.txt
+#delete the bucket 
+aws s3api delete-bucket --bucket 19thjuly2023s3buck --region us-east-1
+#aws user logout (DID NOT WORK)
+aws logout-user --account-id 294755809176 --userid 'AIDAUJIGQW6ML7D6ACZ2S'
+#list the IAM users as per the account 
+aws iam list-users 
+#Logout the user from the terminal by removing the credetials from the location stored 
+rm ~/.aws/config
+rm ~/.aws/credentials
